@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ayokillteck!'s Retro Webpage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap'); /* Import Brutal Tooth font */
+
+        body {
+            background-color: black;
+            color: yellow;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            cursor: none; /* Hide the default cursor */
+        }
+
+        .cursor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+            font-size: 50px;
+            z-index: 10000;
+            animation: rainbow 1s infinite;
+        }
+
+        .cursor-trail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+            font-size: 50px;
+            opacity: 0.7;
+            z-index: 9999;
+            animation: fade 0.5s ease-out forwards, rainbow 1s infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            16% { color: orange; }
+            32% { color: yellow; }
+            48% { color: green; }
+            64% { color: blue; }
+            80% { color: indigo; }
+            100% { color: violet; }
+        }
+
+        @keyframes fade {
+            to {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        .blinking-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-decoration: blink;
+            animation: blink-animation 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        .scrolling-text {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: yellow;
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            animation: scroll-text 10s linear infinite;
+            padding: 10px 0;
+        }
+
+        @keyframes scroll-text {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            color: yellow;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+
+        .social-media a:hover {
+            text-decoration: underline;
+        }
+
+        .big-thrax-gang {
+            font-size: 24px; /* Regular size for text */
+            font-weight: bold;
+            color: yellow;
+            position: fixed;
+            bottom: 50px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            font-family: 'Russo One', sans-serif; /* Brutal Tooth font */
+        }
+
+        .youtube-embed {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor" class="cursor">∞</div>
+
+    <h1 class="blinking-title">Welcome to Ayokillteck!'s Webpage</h1>
+
+    <p>Check out my latest beats and tracks! Stay tuned for more updates.</p>
+
+    <p>
+        <a href="#music">My Music</a> | 
+        <a href="#bio">About Me</a> | 
+        <a href="#contact">Contact</a>
+    </p>
+
+    <div class="social-media">
+        <a href="https://instagram.com/ayokillteck" target="_blank">Instagram</a> | 
+        <a href="https://x.com/ayokillteck" target="_blank">X</a> | 
+        <a href="https://www.youtube.com/@ayokillteck4600" target="_blank">YouTube</a> |
+        <a href="https://soundcloud.com/ayokillteck4600" target="_blank">SoundCloud</a> <!-- Added SoundCloud link -->
+    </div>
+
+    <div class="youtube-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1q1w9gg_T8Q" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="big-thrax-gang">Thrax Gang</div>
+
+    <div class="scrolling-text">Welcome to my page</div>
+
+    <script>
+        document.addEventListener("mousemove", function(event) {
+            const cursor = document.getElementById("cursor");
+            cursor.style.left = event.pageX + "px";
+            cursor.style.top = event.pageY + "px";
+
+            // Create a trail element
+            const trail = document.createElement("div");
+            trail.className = "cursor-trail";
+            trail.style.left = event.pageX + "px";
+            trail.style.top = event.pageY + "px";
+            trail.innerText = "∞";
+
+            document.body.appendChild(trail);
+
+            // Remove the trail after a while
+            setTimeout(() => {
+                trail.remove();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
